@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +13,22 @@ public class Lugeja {
         sc.nextLine(); //kolmas tühi
 
         while(sc.hasNextLine()){
-            JõuHarjutus harjutus = new JõuHarjutus(sc.nextLine());
-            harjutused.add(harjutus); //neljas kuni lõpuni on harjutused
+            String[] andmed = sc.nextLine().split(";");
+            if(andmed.length == 3)
+                harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1])));
+            else
+                harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2])));
         }
         sc.close();
 
         return new Treeningkava(nimi, harjutused);
     }
 
-    public static void loeFaili(Treeningkava kava){ //kaalude/kestvuse muutujad omistatud olema
-
+    public static void loeFaili(String filename, Treeningkava kava) throws Exception{ //kaalude/kestvuse muutujad omistatud olema
+        PrintWriter writer = new PrintWriter(filename, "UTF-8");
+        writer.println(kava.getNimi() + "\n");
+        for(Harjutus harjutus: kava.getHarjutused())
+            writer.println(harjutus);
+        writer.close();
     }
 }
