@@ -6,9 +6,10 @@ public class KestvusHarjutus extends Harjutus{
         this.vahemik = vahemik;
     }
 
-    public KestvusHarjutus(String nimi, double kiirus){
+    public KestvusHarjutus(String nimi, double kiirus, double vahemik){
         super(nimi);
         this.kiirus = kiirus;
+        this.vahemik = vahemik;
     }
 
     @Override
@@ -18,9 +19,6 @@ public class KestvusHarjutus extends Harjutus{
 
     @Override
     public String toString() {
-        String vahemaa = "";
-        if(vahemik != 0f)
-            vahemaa = Double.toString(vahemik);
-        return getNimi() + ";" + kiirus + ";" + vahemaa;
+        return getNimi() + ";" + kiirus + ";" + vahemik;
     }
 }

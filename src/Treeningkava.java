@@ -18,7 +18,7 @@ public class Treeningkava {
     }
 
     public void taastaAlgseis(){
-        //kasutada peale faili kirjutamist
+        //kasutada peale faili kirjutamist/enne kava täitmist
         for(Harjutus harjutus:harjutused)
             harjutus.tühjendaAndmed();
     }

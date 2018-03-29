@@ -13,11 +13,12 @@ public class Lugeja {
         sc.nextLine(); //kolmas tühi
 
         while(sc.hasNextLine()){
+            //loeb sisse koos tekstifailis olnud kaalude/vahemaadega, kasutada algseisu taastamist, kui tahta uus fail luua
             String[] andmed = sc.nextLine().split(";");
             if(andmed.length == 3)
-                harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1])));
+                harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1]), Double.parseDouble(andmed[2])));
             else
-                harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2])));
+                harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2]), andmed[3]));
         }
         sc.close();
 
@@ -26,7 +27,7 @@ public class Lugeja {
 
     public static void loeFaili(String filename, Treeningkava kava) throws Exception{ //kaalude/kestvuse muutujad omistatud olema
         PrintWriter writer = new PrintWriter(filename, "UTF-8");
-        writer.println(kava.getNimi() + "\n");
+        writer.println(kava.getNimi() + "\n\n");
         for(Harjutus harjutus: kava.getHarjutused())
             writer.println(harjutus);
         writer.close();

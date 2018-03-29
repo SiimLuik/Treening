@@ -1,0 +1,8 @@
+Treeningu nimi
+
+
+JõuA;3;4;0/
+JõuB;10;4;0/
+KestvusA;500.0;0.0
+KestvusBTäidetud;500.0;653.4
+JõuCTäidetud;2;7;60/65/70/70/
