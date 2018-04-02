@@ -1,12 +1,12 @@
 public class KestvusHarjutus extends Harjutus{
     private double kiirus;
-    private double vahemik;
+    private Double vahemik;
 
     public void setVahemik(double vahemik) {
         this.vahemik = vahemik;
     }
 
-    public KestvusHarjutus(String nimi, double kiirus, double vahemik){
+    public KestvusHarjutus(String nimi, double kiirus, Double vahemik){
         super(nimi);
         this.kiirus = kiirus;
         this.vahemik = vahemik;
@@ -14,11 +14,14 @@ public class KestvusHarjutus extends Harjutus{
 
     @Override
     public void tühjendaAndmed(){
-        vahemik = 0f;
+        vahemik = null;
     }
 
     @Override
     public String toString() {
-        return getNimi() + ";" + kiirus + ";" + vahemik;
+        String strVahemik = "";
+        if(vahemik != null)
+            strVahemik = Double.toString(vahemik);
+        return getNimi() + ";" + kiirus + ";" + strVahemik + ";";
     }
 }

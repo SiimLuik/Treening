@@ -26,6 +26,7 @@ public class JõuHarjutus extends Harjutus{
     public void tühjendaAndmed(){
         //peale treeningkava täitmist
         kaalud = new ArrayList<>();
+        kaalud.add(0);
     }
 
     public boolean täis(){
@@ -38,6 +39,6 @@ public class JõuHarjutus extends Harjutus{
         String kaals = "";
         for(int kaal:kaalud)
             kaals += kaal + "/";
-        return getNimi() + ";" + sets + ";" + reps + ";" + kaals;
+        return getNimi() + ";" + sets + ";" + reps + ";" + kaals + ";";
     }
 }

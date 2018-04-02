@@ -14,11 +14,20 @@ public class Lugeja {
 
         while(sc.hasNextLine()){
             //loeb sisse koos tekstifailis olnud kaalude/vahemaadega, kasutada algseisu taastamist, kui tahta uus fail luua
-            String[] andmed = sc.nextLine().split(";");
-            if(andmed.length == 3)
-                harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1]), Double.parseDouble(andmed[2])));
-            else
-                harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2]), andmed[3]));
+            String rida = sc.nextLine();
+            String[] andmed = rida.split(";");
+            if((rida.length() - rida.replace(";", "").length()) == 3) {
+                if (andmed.length == 2)
+                    harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1]), null));
+                else if (andmed.length == 3)
+                    harjutused.add(new KestvusHarjutus(andmed[0], Double.parseDouble(andmed[1]), Double.parseDouble(andmed[2])));
+            }
+            else if ((rida.length() - rida.replace(";", "").length()) == 4) {
+                if (andmed.length == 4)
+                    harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2]), andmed[3]));
+                else if (andmed.length == 3)
+                    harjutused.add(new JõuHarjutus(andmed[0], Integer.parseInt(andmed[1]), Integer.parseInt(andmed[2]), ""));
+            }
         }
         sc.close();
 
