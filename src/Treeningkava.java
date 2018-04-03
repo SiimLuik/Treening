@@ -12,6 +12,10 @@ public class Treeningkava {
         return harjutused;
     }
 
+    public void setHarjutused(List<Harjutus> harjutused) {
+        this.harjutused = harjutused;
+    }
+
     public Treeningkava(String nimi, List<Harjutus> harjutused) {
         this.nimi = nimi;
         this.harjutused = harjutused;

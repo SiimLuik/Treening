@@ -12,6 +12,14 @@ public class KestvusHarjutus extends Harjutus{
         this.vahemik = vahemik;
     }
 
+    public double getKiirus() {
+        return kiirus;
+    }
+
+    public Double getVahemik() {
+        return vahemik;
+    }
+
     @Override
     public void tühjendaAndmed(){
         vahemik = null;
