@@ -46,16 +46,8 @@ public class Lugeja {
     }
 
     public static Treeningkava areng(Treeningkava algus, Treeningkava lõpp){
-        //deepcopy, kuna harjutused on listid, ning jõuharjutustel on kaalud listis
-        List<Harjutus> harjutused = new ArrayList<>();
-        for(Harjutus h: lõpp.getHarjutused()) {
-            if(h instanceof JõuHarjutus)
-                harjutused.add(new JõuHarjutus(h.getNimi(), ((JõuHarjutus) h).getSets(), ((JõuHarjutus) h).getReps(), ((JõuHarjutus) h).kaaludString()));
-            else if(h instanceof KestvusHarjutus)
-                harjutused.add(new KestvusHarjutus(h.getNimi(), ((KestvusHarjutus) h).getKiirus(), ((KestvusHarjutus) h).getVahemik()));
-        }
-        //arengusse jäävad lõpukava andmed
-        Treeningkava arengKava = new Treeningkava(lõpp.getNimi(), harjutused);
+        //arengKavasse jäävad esialgu lõpukava andmed
+        Treeningkava arengKava = Treeningkava.deepcopy(lõpp);
 
         //vaatame arengu (lõpu muutujatega) kõiki harjutusi, võrdleme alguskava harjutustega ning lahutame kõigist arengukava tulemustest alguse omad
         for(Harjutus harjutusLõpp:arengKava.getHarjutused()) {

@@ -11,5 +11,6 @@ public class Test {
         System.out.println();
         for(Harjutus harjutus:b.getHarjutused())
             System.out.println(harjutus);
+        Lugeja.loeFaili("test.txt", ab);
     }
 }
