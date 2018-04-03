@@ -40,14 +40,17 @@ public class PeaKlass {
                 failideNimed[i] = file.getName();
                 i++;
             }
+
             System.out.print("Sisestage valik: ");
             String treeningkava = scan.next();
+
             while (!Arrays.asList(failideNimed).contains(treeningkava)) {
                 System.out.println("Sellist treeningkava ei eksisteeri, palun valige järgnevate treeningkavade vahelt:");
                 for (String nimi : failideNimed) {
                     System.out.println("    " + nimi);
                 }
                 System.out.print("Sisestage valik: ");
+                scan.nextLine();
                 treeningkava = scan.next();
             }
 
@@ -65,8 +68,8 @@ public class PeaKlass {
             String harjutus = scan.next();
             int kordaja = 0;
 
-            for (int e = 0; e < Harjutused.size(); e++){
-                if (harjutus.equals(Harjutused.get(e).getNimi())){
+            for (int e = 0; e < Harjutused.size(); e++) {
+                if (harjutus.equals(Harjutused.get(e).getNimi())) {
                     kordaja = e;
                 }
                 System.out.println(Harjutused.get(e).getClass());
@@ -79,21 +82,21 @@ public class PeaKlass {
 
             Lugeja.loeFaili("C:\\Users\\Siim\\IdeaProjects\\ProgeProjekt\\src\\" + HarjutusteList.getNimi() + "-" + alguskuupäev.substring(0, 10).replace("/", ".") + ".txt", HarjutusteList);
         }
-        if (valik.toLowerCase().equals("treeningkava")) {
+       else{
             List<Harjutus> UuedHarjutused = new ArrayList<>();
             System.out.print("Sisestage palun treeningkava nimi: ");
             //NexLine-il tuli probleeme Next-iga, seega panen ühe tühja nextline-i vahele
             scan.nextLine();
             String TreeningkavaNimi = scan.nextLine();
             String lõpp = "";
-            while (!lõpp.equals("KÕIK")){
+            while (!lõpp.equals("KÕIK")) {
                 System.out.print("Kas harjutus on jõu- või kestvusharjutus?: ");
                 String tüüp = scan.next();
-                while (!tüüp.equals("jõuharjutus") && !tüüp.equals("kestvusharjutus")){
+                while (!tüüp.equals("jõuharjutus") && !tüüp.equals("kestvusharjutus")) {
                     System.out.println("Palun valige harjutuse tüübiks, kas jõu- või kestvusharjutus.");
                     tüüp = scan.next();
                 }
-                if (tüüp.equals("jõuharjutus")){
+                if (tüüp.equals("jõuharjutus")) {
                     scan.nextLine();
                     System.out.print("Sisestage harjutuse nimi: ");
                     String harjutus = scan.nextLine();
@@ -102,8 +105,7 @@ public class PeaKlass {
                     System.out.print("Sisestage harjutuse korduste arv: ");
                     int kordused = scan.nextInt();
                     UuedHarjutused.add(new JõuHarjutus(harjutus, seeriad, kordused, "0"));
-                }
-                else {
+                } else {
                     System.out.print("Sisestage harjutuse nimi: ");
                     String harjutus = scan.next();
                     System.out.print("Sisestage harjutuse kiirus: ");
@@ -121,8 +123,6 @@ public class PeaKlass {
             Lugeja.loeFaili("C:\\Users\\Siim\\IdeaProjects\\ProgeProjekt\\src\\" + TreeningkavaNimi + ".txt", uus);
 
         }
-        else {
-            throw new RuntimeException("Ootamatu probleem");
-        }
     }
 }
+
