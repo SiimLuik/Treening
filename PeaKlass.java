@@ -3,10 +3,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PeaKlass {
     public static void main(String[] args) throws Exception {
@@ -81,6 +78,51 @@ public class PeaKlass {
             System.out.println(alguskuupäev);
 
             Lugeja.loeFaili("C:\\Users\\Siim\\IdeaProjects\\ProgeProjekt\\src\\" + HarjutusteList.getNimi() + "-" + alguskuupäev.substring(0, 10).replace("/", ".") + ".txt", HarjutusteList);
+        }
+        if (valik.toLowerCase().equals("treeningkava")) {
+            List<Harjutus> UuedHarjutused = new ArrayList<>();
+            System.out.print("Sisestage palun treeningkava nimi: ");
+            //NexLine-il tuli probleeme Next-iga, seega panen ühe tühja nextline-i vahele
+            scan.nextLine();
+            String TreeningkavaNimi = scan.nextLine();
+            String lõpp = "";
+            while (!lõpp.equals("KÕIK")){
+                System.out.print("Kas harjutus on jõu- või kestvusharjutus?: ");
+                String tüüp = scan.next();
+                while (!tüüp.equals("jõuharjutus") && !tüüp.equals("kestvusharjutus")){
+                    System.out.println("Palun valige harjutuse tüübiks, kas jõu- või kestvusharjutus.");
+                    tüüp = scan.next();
+                }
+                if (tüüp.equals("jõuharjutus")){
+                    scan.nextLine();
+                    System.out.print("Sisestage harjutuse nimi: ");
+                    String harjutus = scan.nextLine();
+                    System.out.print("Sisestage harjutuse seeriate arv: ");
+                    int seeriad = scan.nextInt();
+                    System.out.print("Sisestage harjutuse korduste arv: ");
+                    int kordused = scan.nextInt();
+                    UuedHarjutused.add(new JõuHarjutus(harjutus, seeriad, kordused, "0"));
+                }
+                else {
+                    System.out.print("Sisestage harjutuse nimi: ");
+                    String harjutus = scan.next();
+                    System.out.print("Sisestage harjutuse kiirus: ");
+                    double kiirus = scan.nextInt();
+                    System.out.print("Sisestage harjutuse vahemik: ");
+                    double vahemik = scan.nextInt();
+                    UuedHarjutused.add(new KestvusHarjutus(harjutus, kiirus, vahemik));
+                }
+                System.out.println("Kui soovite lõpetada, siis kirjutage KÕIK, kui soovite lisada uusi harjutusi, vajutage ENTER.");
+                lõpp = scan.nextLine();
+                lõpp = scan.nextLine();
+            }
+            Treeningkava uus = new Treeningkava(TreeningkavaNimi, UuedHarjutused);
+
+            Lugeja.loeFaili("C:\\Users\\Siim\\IdeaProjects\\ProgeProjekt\\src\\" + TreeningkavaNimi + ".txt", uus);
+
+        }
+        else {
+            throw new RuntimeException("Ootamatu probleem");
         }
     }
 }
