@@ -1,8 +1,8 @@
 Treeningu nimi
 //Tühi rida, näiteks kuupäevade jaoks võrdlemisel
 //Tühi rida, ;'ga eraldatud nimi, sets, reps, või ainult vahemaa, ja kaal/vahemaa, mis /'ga eraldatud
-JõuA;3;4;10/15/30/25;
-JõuB;10;4;5/20/50/11;
-KestvusA;500.0;23;
-KestvusBTäidetud;500.0;65.4;
-JõuCTäidetud;2;7;0/5/;
+JõuA;3;4;50/65/60/70;
+JõuB;10;4;50/50/50/50;
+KestvusA;500.0;234.1;
+KestvusBTäidetud;500.0;653.4;
+JõuCTäidetud;2;7;60/65/;

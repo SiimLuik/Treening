@@ -22,7 +22,7 @@ public class Treeningkava {
     }
 
     public void taastaAlgseis(){
-        //kasutada peale faili kirjutamist/enne kava täitmist
+        //andmete puhastamiseks
         for(Harjutus harjutus:harjutused)
             harjutus.tühjendaAndmed();
     }
